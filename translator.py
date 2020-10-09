@@ -7,17 +7,23 @@ def main():
     translations = pd.read_csv("translations.csv")
     translations["english"] = translations["english"].str.lower()
     translations["pinyin"] = translations["pinyin"].str.lower()
+    translations["character_length"] = translations["character"].apply(lambda x: len(x))
+    # translations = translations[translations["character_length"] == 1]
+    translations = translations[translations["category"] == "Family Members"]
+    translations.reset_index(inplace=True)
 
     number_correct = 0
     iterations = 10
-    give_character = True
+    number_of_answers = 3
+    give_character = False
     # Direction of translation
     direction = ["pinyin", "character"]
     if give_character:
         direction = direction[::-1]
 
     for _ in range(iterations):
-        random_indexes = np.random.randint(0,translations.shape[0], size=3)
+        rng = np.random.default_rng()
+        random_indexes = rng.choice(translations.shape[0], size=number_of_answers, replace=False)
         correct_answer = translations.loc[random_indexes[0],direction[0]]
         print("\n", translations.loc[random_indexes[0],direction[1]],sep="")
         np.random.shuffle(random_indexes)
@@ -33,11 +39,16 @@ def main():
         time.sleep(0.5)
         
     score = round(100*(number_correct/iterations), None)
-    print("You achieved a score of ", score, "%, with ", number_correct, "/", iterations," of the questions answered correctly.", sep="")
+    print("\nYou achieved a score of ", score, "%", sep="")
     if score < 75:
         print("Try studying a bit more!")
     else:
         print("Good job!")
+
+    # TODO:
+    # When gui is made, make sure number of answers isnt greater than size of df
+    # also avoid repeat questions and keep track of specific works between sessions
+    # "you should work on x, y, and z", etc.
 
     #TODO: write webscraper https://commons.wikimedia.org/wiki/Commons:Stroke_Order_Project
 
