@@ -4,10 +4,11 @@ import pandas as pd
 import numpy as np
 
 def main():
-    translations = pd.read_csv("translations.csv")
+    translations = pd.read_csv("data/translations.csv")
     translations["english"] = translations["english"].str.lower()
     translations["pinyin"] = translations["pinyin"].str.lower()
-    translations["character_length"] = translations["character"].apply(lambda x: len(x))
+    translations["hanzi_length"] = translations["hanzi"].str.len()
+    # translations["hanzi_length"] = translations["hanzi"].apply(lambda x: len(x))
     # translations = translations[translations["character_length"] == 1]
     translations = translations[translations["category"] == "Family Members"]
     translations.reset_index(inplace=True)
@@ -17,7 +18,7 @@ def main():
     number_of_answers = 3
     give_character = False
     # Direction of translation
-    direction = ["pinyin", "character"]
+    direction = ["pinyin", "hanzi"]
     if give_character:
         direction = direction[::-1]
 
