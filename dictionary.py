@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-import pandas as pd
+ 
+import csv
 import sys
 from tonewriter import striptones,pinyinize
 
@@ -11,20 +12,22 @@ def search(query):
     query = pinyinize(query).replace(" ","").lower()
     tone_search = query != striptones(query)
     #hanzi_search = not query.isalpha()
-    translations = pd.read_csv("data/translations.csv")
-    for _, row in translations.iterrows():
-        c1 = not tone_search and ((striptones(row["pinyin"].replace(" ","").lower()).find(query) != -1) or (row["english"].lower().find(query) != -1))
-        c2 = tone_search and (row["pinyin"].replace(" ","").lower().find(query) != -1)
-        #c3 = hanzi_search and (row["hanzi"].replace(" ","").find(query) != -1)
-        if (c1 or c2):
-            found = True
-            #print("Match found!")
-            print("    Pinyin: ",row.pinyin, sep=" ")
-            print("    Hanzi:  ",row.hanzi, sep=" ")
-            print("    English:",row.english, sep=" ")
-            print()
-    if not found:
-        print("Match not found\n") 
+    # translations = pd.read_csv("data/translations.csv")
+    with open("data/translations.csv") as d:
+        translations = csv.DictReader(d)
+        for row in translations:
+            c1 = not tone_search and ((striptones(row["pinyin"].replace(" ","").lower()).find(query) != -1) or (row["english"].lower().find(query) != -1))
+            c2 = tone_search and (row["pinyin"].replace(" ","").lower().find(query) != -1)
+            #c3 = hanzi_search and (row["hanzi"].replace(" ","").find(query) != -1)
+            if (c1 or c2):
+                found = True
+                #print("Match found!")
+                print("    Pinyin: ",row["pinyin"], sep=" ")
+                print("    Hanzi:  ",row["hanzi"], sep=" ")
+                print("    English:",row["english"], sep=" ")
+                print()
+        if not found:
+            print("Match not found\n") 
         
         
                 
@@ -45,3 +48,8 @@ if __name__ == "__main__":
             print("-------------------------"+"-"*len(response)+"\n")
             search(response)
             response = input("Enter your search term > ")
+
+    else:
+        for word in sys.argv[1:]:
+            print(" > ",word,"\n----"+"-"*len(word))
+            search(sys.argv[1])

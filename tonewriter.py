@@ -43,31 +43,29 @@ def to_pinyin(hanzi):
     response = requests.get(url)
     return json.loads(response.content)["pinyin"]
 
-def to_hanzi(pinyin="nǐ hǎo", clip=False):
-    pinyin = pinyin.lower()
-    pinyin_split = pinyin.split(" ")
-    translations = pd.read_csv("data/translations.csv")[["hanzi","pinyin"]]
-    
-    translations["hanzi_length"] = translations["hanzi"].str.len()
-    for length in range(translations["hanzi_length"].max(), 0, -1):
-        subset = translations[translations["hanzi_length"] == length]
-        for _, row in subset.iterrows():
-            if pinyin.find(row["pinyin"].lower()) != -1:
-                for i, p in enumerate(pinyin_split):
-                    if row["pinyin"].lower() in p:
-                        pinyin_split[i] = row["hanzi"]
-                        
-    pinyin = " ".join(pinyin_split)
-    if clip:
-       pyperclip.copy(pinyin)
-    return pinyin
+# def _to_hanzi(pinyin="nǐ hǎo", clip=False):
+    # pinyin = pinyin.lower()
+    # pinyin_split = pinyin.split(" ")
+    # translations = pd.read_csv("data/translations.csv")[["hanzi","pinyin"]]
+    # translations["hanzi_length"] = translations["hanzi"].str.len()
+    # for length in range(translations["hanzi_length"].max(), 0, -1):
+        # subset = translations[translations["hanzi_length"] == length]
+        # for _, row in subset.iterrows():
+            # if pinyin.find(row["pinyin"].lower()) != -1:
+                # for i, p in enumerate(pinyin_split):
+                    # if row["pinyin"].lower() in p:
+                        # pinyin_split[i] = row["hanzi"]
+    # pinyin = "".join(pinyin_split)
+    # if clip:
+       # pyperclip.copy(pinyin)
+    # return pinyin
 
-
-if __name__ == "__main__":
+def main():
     if len(sys.argv) == 1:
         response = "Q"
         print("Q TO EXIT\n")
-        response = input("[1] numeric -> pinyin\n[2] pinyin -> numeric\n> ")
+        response = "1"
+        #response = input("[1] numeric to pinyin\n[2] pinyin to numeric\n> ")
         while response.lower() != "q":
             if response == "1":
                 response = input("Enter numeric (ni3 ha3o) > ")
@@ -83,7 +81,7 @@ if __name__ == "__main__":
                     pyperclip.copy(numeric)
                     print(numeric, " copied to clipboard", sep = "")
                     response = input("Enter pinyin (nǐ hǎo) > ")
-            response = input("[1] numeric -> pinyin\n[2] pinyin -> numeric\n> ")
+            response = input("[1] numeric to pinyin\n[2] pinyin to numeric\n> ")
             
     else:
         with open(sys.argv[1], "r") as f:
@@ -91,4 +89,37 @@ if __name__ == "__main__":
         file_string = pinyinize(file_string)
         with open(sys.argv[1], "w") as f:
             f.write(file_string)
+
+def to_hanzi(pinyin, clip=False):
+
+    pinyin = pinyin.lower()
+    pinyin_split = pinyin.split(" ")
+    translations = pd.read_csv("data/translations.csv")[["hanzi","pinyin"]]
+    pinyin_to_hanzi = {}
+    for _, row in translations.iterrows():
+        p = row["pinyin"].lower().split(" ")
+        h = [character for character in row["hanzi"]]
+        for i,j in zip(p,h):
+            if i in pinyin_to_hanzi:
+                if pinyin_to_hanzi[i] != j:
+                    updated = pinyin_to_hanzi[i].replace("(","").replace(")","").replace(f"/{j}","").replace(f"{j}/","").replace(f"{j}","")
+                    new_value = f"({updated}/{j})"
+                    pinyin_to_hanzi[i] = new_value
+            else:
+                pinyin_to_hanzi[i] = j
+    list_hanzi = []
+    for word in pinyin.split(" "):
+        list_hanzi.append(pinyin_to_hanzi[word]) if word in pinyin_to_hanzi else list_hanzi.append(f"({word})")
+
+    hanzi = "".join(list_hanzi)
+    if clip:
+       pyperclip.copy(hanzi)
+    return hanzi
+
+
+
+if __name__ == "__main__":
+    main()
+    #print(__name__)
+
 
