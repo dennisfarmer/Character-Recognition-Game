@@ -21,3 +21,5 @@ WIP gui using PyQt that will be used to tie all of my programs together in a uni
 ### `tests.py`
 Basic unit test program to make sure my scripts still work as I add new vocabulary to my vocab sheet. Currently only tests the `to_hanzi(pinyin)` function from `tonewriter.py`, but will be expanded upon as more stuff gets written.
 
+### `flashcard.py`
+I likely won't work on this part until everythin else is done, but `flashcard.py` is a rudimentary memory game designed to help with Chinese words that you might struggle with. Vocabulary can be sorted based on length, lesson number, and category. Eventually I would like to be able to incorporate a sort of progress system akin to other memory games where the game keeps track of what your strengths and weaknesses are. I might even use some machine learning to design it, I'm not sure lol.
