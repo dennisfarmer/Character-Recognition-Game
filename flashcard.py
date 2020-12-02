@@ -3,6 +3,12 @@ import time
 import pandas as pd
 import numpy as np
 
+def choose_category(t):
+    categories = [v for v in t.category.unique()]
+    for i in categories:
+        print(i)
+
+
 def main():
     translations = pd.read_csv("data/translations.csv")
     translations["english"] = translations["english"].str.lower()
@@ -54,4 +60,6 @@ def main():
     #TODO: write webscraper https://commons.wikimedia.org/wiki/Commons:Stroke_Order_Project
 
 if __name__ == "__main__":
-    main()
+    translations = pd.read_csv("data/translations.csv")
+    choose_category(translations)
+    #main()

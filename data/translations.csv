@@ -1,6 +1,7 @@
 hanzi,pinyin,english,lesson,category
 你,nǐ,You,1,
-好,hǎo,Good,1,
+好,hǎo,Good; like,1,
+你好,nǐ hǎo,Hello; good,1
 我,wǒ,I,1,
 是,shì,to be,1,
 呢,ne,Question Particle,1,
@@ -107,6 +108,90 @@ hanzi,pinyin,english,lesson,category
 星期五,Xīngqíwǔ,friday,3,
 星期六,Xīngqíliù,saturday,3,
 星期日,Xīngqírì,sunday,3,
-你多大？,nǐ duō dà? ,How old are you? (General),3,
-你几岁？,nǐ jǐ suì? ,How old are you? (for children),3,
+你多大?,nǐ duō dà? ,How old are you? (General),3,
+你几岁?,nǐ jǐ suì? ,How old are you? (for children),3,
 忙,Máng,busy,3,
+周一,zhōu yī,Monday,4
+周二,zhōu èr,Tuesday,4
+周三,zhōu sān,Wednesday,4
+周四,zhōu sì,Thursday,4
+周五,zhōu wǔ,Friday,4
+周六,zhōu liù,Saturday,4
+周日,zhōu rì,Sunday,4
+周末,zhōu mò,weekend,4
+爱好,aì hào,hobby,
+爱,aì,love; like,4
+目mù,eye,4,radicals 
+手,shǒu,hand,4,radicals  
+木,mù,wood,4,radicals  
+山shān,montain,4,radicals
+看,kàn,to watch; to look; to read,4
+电视,diàn shì,television,4
+电影,diàn yǐng,movie,4
+电脑,diàn nǎo,computer,4
+书,shū,book,4
+听,tīng,to listen,4
+音乐,yīnyuè,music,4
+新闻,xīn wén,news,4
+打,dǎ,to play,4
+打球,dǎ qiú,to play ball,4
+你周末喜欢做什么?,nǐ zhōu mò xǐ huan zuò shén me?,What do you like to do on the weekend?,4
+常常,cháng cháng,often,4
+有时,yǒu shí,Sometimes,4
+那么,nà me,then; in that case,4
+去,qù,to go,4
+好吗,hǎo ma,Alright(?),4
+请客,qǐng kè,to invite someone,4
+为什么,Wèishénme,Why,4
+因为,Yīn wei,because,4
+所以,suǒ yǐ,so,4
+小,xiǎo,small; little; young,4
+好久,hǎo jiǔ,long time,4
+不错,bú cuò,pretty good,4
+想,xiǎng,to want to; would like to; to think,4
+觉得,jué de,to feel; to think,4
+有意思,yǒu yìsi,interesting,4
+睡觉,shuì jiào,to sleep,4
+别人,bié rén,other people; another person,4
+只,zhǐ,only,4
+算了,suàn le,forget it; never mind,4
+找,zhǎo,to look for,4
+上网,shàng wǎng,to use internet,4
+聊天儿,liáo tiān er,to chat,4
+玩游戏,wán yóu xì,to play a game,4
+逛街,guàng jiē,to shop,4
+发短信,fā duǎn xìn,to send message,4
+呀,ya,interjectory particle used to soften a question,5
+进,jìn,to enter,5
+快,kuài,fast, quick; quickly,5
+进来,jìn lai,to come in,5
+来,lái,to come,5
+介绍,jièshào,to introduce,5
+一下,yí xià,once; a bit ,5
+高兴,gāoxìng,happy, pleased,5
+漂亮,piào liang pretty,5
+坐,zuò,to sit,5
+在,zài,at; in; on,5
+学校,xué xiào,school,5
+喝,hē,to drink,5
+点儿,diǎn(er),a little, a bit; some,5
+茶,chá,tea,5
+咖啡,kā fēi,coffee,5
+吧,ba,a sentence-final particle,5
+要,yào,to want,5
+瓶,píng,measure word; bottle,5
+可乐,kě lè,Coke or Pepsi cola,5
+可以,kě yǐ,can; may,5
+对不起,duì bu qǐ,sorry,5
+给,gěi,to give,5
+杯,bēi,measure word for cup & glass,5
+水,shuǐ,water,5
+玩儿,wán(er),to have fun; to play,5
+了,le,a dynamic particle; (the occurrence or completion of an action or event),5
+图书馆,túshūguǎn,library,5
+ 一起,yìqǐ,together,5
+聊天儿,liáo tiān(er),to chat,5
+聊,liáo,to chat,5
+才,cái,not until, only then,5 
+回家,huí jiā,to go home,5
+回,huí,to return,5
