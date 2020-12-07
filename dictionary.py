@@ -6,20 +6,32 @@ from tonewriter import striptones,pinyinize
 
 
 def search(query):
-    c1 = False
-    c2 = False
+    condition = False
     found = False
     query = pinyinize(query).replace(" ","").lower()
-    tone_search = query != striptones(query)
-    #hanzi_search = not query.isalpha()
+
+    # :e for english, :t for tone
+    option = query[:2]
+    if option[0] == ":":
+        query = query[2:]
+    else:
+        option = ""
+
+    english_search = option == ":e"
+    tone_search = query != striptones(query) or option == ":t"
+    # hanzi_search = not query.isalpha()
     # translations = pd.read_csv("data/translations.csv")
     with open("data/translations.csv") as d:
         translations = csv.DictReader(d)
         for row in translations:
-            c1 = not tone_search and ((striptones(row["pinyin"].replace(" ","").lower()).find(query) != -1) or (row["english"].lower().find(query) != -1))
-            c2 = tone_search and (row["pinyin"].replace(" ","").lower().find(query) != -1)
+            if english_search:
+                condition = (row["english"].lower().find(query) != -1)
+            elif tone_search:
+                condition = (row["pinyin"].replace(" ","").lower().find(query) != -1)
+            else:
+                condition = ((striptones(row["pinyin"].replace(" ","").lower()).find(query) != -1) or (row["english"].lower().find(query) != -1))
             #c3 = hanzi_search and (row["hanzi"].replace(" ","").find(query) != -1)
-            if (c1 or c2):
+            if (condition):
                 found = True
                 #print("Match found!")
                 print("    Pinyin: ",row["pinyin"], sep=" ")
@@ -27,10 +39,9 @@ def search(query):
                 print("    English:",row["english"], sep=" ")
                 print()
         if not found:
-            print("Match not found\n") 
-        
-        
-                
+            print("Match not found\n")
+
+
 if __name__ == "__main__":
 
     # print("1st Tone: ō (flat)",
@@ -52,4 +63,4 @@ if __name__ == "__main__":
     else:
         for word in sys.argv[1:]:
             print(" > ",word,"\n----"+"-"*len(word))
-            search(sys.argv[1])
+            search(word)

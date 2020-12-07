@@ -1,7 +1,25 @@
  #!/usr/bin/env python3
 
 import pandas as pd
-from tonewriter import to_hanzi
+from tonewriter import to_pinyin, to_hanzi
+
+
+def to_pinyin_test():
+    # print("index\toutput\t\tcorrect\tpinyin")
+    num_errors = 0
+    translations = pd.read_csv("data/translations.csv")[["hanzi","pinyin","category"]]
+    for i, row in translations.iterrows():
+        if row["category"] != "phrase":
+            pinyin = to_pinyin(row["hanzi"])
+            print(pinyin,"\t*\t",row.pinyin)
+            # if pinyin != row.pinyin:
+                
+            # else:
+                    # num_errors+=1
+                    # print(f"{i}\t{hanzi}\t\t{row.hanzi}\t{row.pinyin}")
+
+    #print("\nNumber of errors:",num_errors)
+    # return num_errors==0,num_errors
 
 
 
@@ -46,10 +64,11 @@ def to_hanzi_test():
 if __name__ == "__main__":
 
     # to_hanzi():
-    results = to_hanzi_test()
-    if results[0]:
-        print("to_hanzi() passed!")
-    else:
-        print("to_hanzi() failed, ",results[1], " errors encountered")
+    # results = to_hanzi_test()
+    # if results[0]:
+        # print("to_hanzi() passed!")
+    # else:
+        # print("to_hanzi() failed, ",results[1], " errors encountered")
+    to_pinyin_test()
 
 
