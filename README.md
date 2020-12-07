@@ -10,7 +10,7 @@ Chinese is a pretty dope language, without nasty conjugation and plural forms li
 
 
 ### `tonewriter.py`
-This program is used to convert between numerized pinyin and proper pinyin with tone characters (ni3 ha3o to nǐ hǎo). You can give `tonewriter.py` a line of text to copy right to your clipboard automatically, or give it an entire file to convert. Currently only numerized to pinyin is supported , but eventually pinyin to hanzi will also be implimented.
+This program is used to convert between numerized pinyin and proper pinyin with tone characters (ni3 ha3o to nǐ hǎo). You can give `tonewriter.py` a line of text to copy right to your clipboard automatically, or give it an entire file to convert. Pinyin to hanzi is also supported, but the potential one-to-many relationship between pinyin and hanzi will require implementation of a character selection menu, which is yet to be implimented. Right now, alt characters are given via ...(o1/o2/...)..., and you have to manually select the desired character.
 
 ### `dictionary.py`
 This program can be used to quickly look through a vocabulary list in the form of a csv file to help with chinese vocab. Search can be performed with untoned pinyin, numeric pinyin, or english. Hanzi will later be supported, but it is hard to type hanzi without copying from google translate so this feature sits low on my priority list.
