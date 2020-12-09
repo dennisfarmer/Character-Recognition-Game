@@ -1,6 +1,7 @@
 hanzi,pinyin,english,lesson,category
 你,nǐ,You,1,
 好,hǎo,Good; like,1,
+很好,hěn hǎo,very good,1,
 你好,nǐ hǎo,Hello; good,1,
 我,wǒ,I,1,
 是,shì,to be,1,
@@ -32,7 +33,7 @@ hanzi,pinyin,english,lesson,category
 不是,bú shì,be not,1,
 家,jiā,family; home ,2,
 有,yǒu,have ,2,
-没有,méi yǒu,not have,2,
+没有,méi yǒu,not have; negative (in past tense),2,
 几,jǐ,how many; which; when,2,question
 口,kǒu,measure word for number of family members ,2,
 个,gè,measure word for many common everyday objects,2,
@@ -139,7 +140,7 @@ hanzi,pinyin,english,lesson,category
 新闻,xīn wén,news,4,
 打,dǎ,to play,4,
 打球,dǎ qiú,to play ball,4,
-你周末喜欢做什么?,nǐ zhōu mò xǐ huan zuò shén me?,What do you like to do on the weekend?,4,phrase
+你周末喜欢做什么?,nǐ zhōu mò xǐ huan zuò shén me?,What do you like to do on the weekend?,4,phrases
 常常,cháng cháng,often,4,
 有时,yǒu shí,Sometimes,4,
 那么,nà me,then; in that case,4,

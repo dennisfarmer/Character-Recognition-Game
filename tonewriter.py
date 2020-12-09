@@ -36,7 +36,7 @@ def numericize(string, clip=False, mute=False, void=True):
     if not void: return string
 
 def striptones(string, clip=False, mute=False, void=True):
-    string = pinyinize(string)
+    string = pinyinize(string, void=False)
     string = string.replace("ā", "a").replace("á","a").replace("ǎ","a").replace("à","a")
     string = string.replace("ē", "e").replace("é","e").replace("ě","e").replace("è","e")
     string = string.replace("ī", "i").replace("í","i").replace("ǐ","i").replace("ì","i")
