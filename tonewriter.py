@@ -21,7 +21,7 @@ def pinyinize(string, clip=False, mute=False, void=True):
     string = string.replace("u1","ū").replace("u2","ú").replace("u3","ǔ").replace("u4","ù").replace("u:","ü")
     if clip:
         pyperclip.copy(string)
-        if not mute: print(pinyin, " copied to clipboard\n", sep = "")
+        if not mute: print(string, " copied to clipboard\n", sep = "")
     if not void: return string
 
 def numericize(string, clip=False, mute=False, void=True):
